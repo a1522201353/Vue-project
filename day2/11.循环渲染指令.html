@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+</head>
+
+<body>
+    <!-- 希望Vue能控制这个div -->
+    <div id="app">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <th>索引</th>
+                <th>ID</th>
+                <th>姓名</th>
+            </thead>
+            <tbody>
+                <!-- 自动创建 和for in 一样  item遍历list的每一个元素-->
+                <!-- index是索引 -->
+                <!-- 要加一个括号 -->
+                <!-- 官方建议 只要用到了v-for指令 一定要绑定一个:key属性 -->
+                <!-- 而且，尽量把id作为key的值 -->
+                <!-- key的值只能是数字或者字符类型 -->
+                <!-- key的值不能重复！！！ -->
+                <tr v-for="(item,index) in list" :key="item.id" :title="item.name">
+                    <td>{{ index}}</td>
+                    <td>{{ item.id}}</td>
+                    <td>{{ item.name}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 1.导入vue的库文件  在window全局就有了Vue这个构造函数-->
+    <script src="./lib/vue.js"></script>
+
+    <!-- 2.创建Vue的实例对象 -->
+    <script>
+        // 创建vue的实例对象
+        const vm = new Vue({
+            // el属性是固定的写法 要控制app这个div盒子 
+            el: "#app",
+            // data对象就是要渲染到页面的数据
+            data: {
+                list: [
+                    { id: 1, name: "魏三" },
+                    { id: 2, name: "张三" },
+                    { id: 3, name: "李四" },
+                    { id: 4, name: "王五" },
+                    { id: 5, name: "三笠" },
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

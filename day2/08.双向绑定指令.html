@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 希望Vue能控制这个div -->
+    <div id="app">
+        <p>用户的名字是：{{username}}</p>
+        <!-- v-model双向数据绑定  -->
+        <input type="text" name="" id="" v-model="username">
+        <input type="text" name="" id="" :value="username">
+
+
+        <!-- 演示 -->
+        <!-- v-model可以获取value的值 -->
+        <select name="" id="" v-model="city">
+            <option value="">请选择城市</option>
+            <option value="1">北京</option>
+            <option value="2">上海</option>
+            <option value="3">广州</option>
+        </select>
+    </div>
+    <!-- v-model只能和input textarea select  表单属性才可以用 -->
+
+
+
+
+
+    <script src="./lib/vue.js"></script>
+
+    <!-- 2.创建Vue的实例对象 -->
+    <script>
+        // 创建vue的实例对象
+        const vm = new Vue({
+            // el属性是固定的写法 要控制app这个div盒子 
+            el: "#app",
+            // data对象就是要渲染到页面的数据
+            data: {
+                username: "zhangsan",
+                city: ""
+            }
+        });
+    </script>
+</body>
+
+</html>

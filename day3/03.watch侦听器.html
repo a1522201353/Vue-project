@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script src="./lib/jquery.js"></script>
+    <div id="app">
+        <input type="text" name="" id="" v-model="username">
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                username: "",
+            },
+            // 所有的侦听器都应该被定义到watch()
+            watch: {
+                // 要监视谁就把他当作方法名
+                // 侦听器就是一个函数
+                username(newval, oldval) {
+                    // newval 变化后的新值 oldval变化前的旧值
+                    $.get("https://www.escook.cn/api/finduser/" + newval, (result) => {
+                        console.log(result);
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

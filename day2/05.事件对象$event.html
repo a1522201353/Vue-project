@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 希望Vue能控制这个div -->
+    <div id="app">
+        <p>count的值是{{count}}</p>
+        <!-- vue提供了内置变量 名字叫做$event 他就是原生Dom的事件对象e -->
+        <!-- 不传参默认就传了一个event对象 如果传参就不会传event -->
+        <button @click="add">+N</button>
+    </div>
+
+    <!-- 1.导入vue的库文件  在window全局就有了Vue这个构造函数-->
+    <script src="./lib/vue.js"></script>
+
+    <!-- 2.创建Vue的实例对象 -->
+    <script>
+        // 创建vue的实例对象
+        const vm = new Vue({
+            // el属性是固定的写法 要控制app这个div盒子 
+            el: "#app",
+            // data对象就是要渲染到页面的数据
+            data: {
+                username: "zhangsan",
+                count: 0
+            },
+            methods: {
+                add(e) {
+                    this.count += 1;
+                    if (this.count % 2 === 0) {
+                        e.target.style.backgroundColor = "red";
+                    } else {
+                        e.target.style.backgroundColor = "";
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [
+            { id: 1, name: "战三", state: true },
+            { id: 2, name: "李四", state: false },
+            { id: 3, name: "炫舞", state: true },
+        ]
+        // 判断数组中 是否被全选了
+        const result = arr.every((item) => {
+            return item.state == true;
+        })
+        console.log(result);
+    </script>
+</body>
+
+</html>

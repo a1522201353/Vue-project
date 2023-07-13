@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 希望Vue能控制这个div -->
+    <div id="app">
+        <button></button>
+        <!-- v-if的原理是动态创建和删除 直接删除 -->
+        <!-- 如果刚进入页面的时候 某些元素默认不需要被显示 而且后期这个元素可能不被展示出来，此时v-if性能更好 -->
+        <p v-if="flag">这是被v-if控制的元素</p>
+        <!-- v-show的原理是动态添加display：none；样式 来实现元素的实现和隐藏 -->
+        <!-- 如果要频繁切换显示模式 v-show的性能更好 -->
+        <p v-show="flag">这是被v-show控制的元素</p>
+
+
+        <hr>
+        <div v-if="type === 'A'">优秀</div>
+        <div v-else-if="type === 'B'">良好</div>
+        <div v-else-if="type === 'c'">一般</div>
+        <div v-else>差</div>
+    </div>
+
+
+    </div>
+
+    <!-- 1.导入vue的库文件  在window全局就有了Vue这个构造函数-->
+    <script src="./lib/vue.js"></script>
+
+    <!-- 2.创建Vue的实例对象 -->
+    <script>
+        // 创建vue的实例对象
+        const vm = new Vue({
+            // el属性是固定的写法 要控制app这个div盒子 
+            el: "#app",
+            // data对象就是要渲染到页面的数据
+            data: {
+                // 如果flag为true，则显示被控制的元素,如果为false，则隐藏被控制的元素
+                flag: true,
+                type: 'A'
+            }
+        });
+    </script>
+</body>
+
+</html>

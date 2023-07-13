@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <div id="app">
+        <p>r:<input type="text" v-model.number="r"></p>
+        <p>g:<input type="text" v-model.number="g"></p>
+        <p>b:<input type="text" v-model.number="b"></p>
+        <hr>
+        <!-- v-bind属性绑定  -->
+        <div class="box" :style="{backgroundColor:rgb}">
+            {{rgb}}
+        </div>
+        <button v-on:click="show">按钮</button>
+    </div>
+
+
+
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                r: 0,
+                g: 0,
+                b: 0
+            },
+            methods: {
+                show() {
+                    console.log(this.rgb);
+                }
+            },
+            // 所有计算属性 都要定义到computed节点之下
+            // 计算属性在定义的时候 要定义成方法格式
+            computed: {
+                // rgb 作为一个计算属性 被定义成了方法格式
+                // 最终 这个方法中，要返回一个生成好的rgb(x,x,x)的字符串
+                rgb() {
+                    return `rgb(${this.r},${this.g},${this.b})`;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

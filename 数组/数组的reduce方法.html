@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [
+            { id: 1, name: "战三", state: true, price: 10, count: 1 },
+            { id: 2, name: "李四", state: false, price: 20, count: 2 },
+            { id: 3, name: "炫舞", state: true, price: 30, count: 3 },
+        ]
+
+        // 需求 把购物车数组中，以勾选的水果，总价累加起来，
+
+        // filter 将arr.state==true选择出来 返回一个数组
+        // 在用foreach去调用
+
+        // 第一种方法
+
+        // let amt = 0;
+        // arr.filter((item) => {
+        //     return item.state == true;
+        // }).forEach(item => {
+        //     amt = amt + (item.price * item.count);
+        // })
+        // console.log(amt);
+
+
+        // 第二种方法
+        // arr.filter((item) => {
+        //     return item.state == true;
+        // }).reduce((累加的结果, 当前循环项) => {
+
+        // }, 初始值)
+
+
+
+        const result = arr.filter((item) => {
+            return item.state == true;
+        }).reduce((amt, item) => {
+            return amt = amt + (item.price * item.count);
+        }, 0)
+        console.log(result);
+    </script>
+</body>
+
+</html>

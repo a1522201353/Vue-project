@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 希望Vue能控制这个div -->
+    <div id="app">
+        <!-- v-bind可以在绑定属性值 其他{{}} v-text不行 -->
+        <input type="text" v-bind:placeholder="tips">
+        <!-- v-bind可以简写为： -->
+        <!-- <input type="text" :placeholder="tips"> -->
+
+        <hr>
+
+
+        <div>{{1 + 2}}</div>
+        <div>反转：{{tips.split("").reverse().join("")}}</div>
+
+        <div :title='"box"+index'>123123</div>
+    </div>
+
+    <!-- 1.导入vue的库文件  在window全局就有了Vue这个构造函数-->
+    <script src="./lib/vue.js"></script>
+
+    <!-- 2.创建Vue的实例对象 -->
+    <script>
+        // 创建vue的实例对象
+        const vm = new Vue({
+            // el属性是固定的写法 要控制app这个div盒子 
+            el: "#app",
+            // data对象就是要渲染到页面的数据
+            data: {
+                tips: "请输入用户名",
+                index: 3
+            },
+
+        });
+    </script>
+</body>
+
+</html>

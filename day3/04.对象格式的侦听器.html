@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script src="./lib/jquery.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" name="" id="" v-model="username">
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                username: "ad",
+            },
+            // 所有的侦听器都应该被定义到watch()
+            watch: {
+                // 定义对象格式的侦听器
+                username: {
+                    // 侦听器的处理函数
+                    handler(newval, oldval) {
+                        console.log(newval, oldval);
+                    },
+                    // true点开页面就会自动触发一次侦听器
+                    // false就不会 默认是false
+                    immediate: true
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

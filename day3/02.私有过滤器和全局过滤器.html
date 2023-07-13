@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ message | capi}}</p>
+    </div>
+    <div id="app2">
+        <p>{{ message | capi}}</p>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        // 使用全局过滤器 这样两个vue都可以使用
+        // 如果全局过滤器和私有过滤器名字重复 优先调用私有的
+        Vue.filter("capi", (str) => {
+            const first = str.charAt(0).toUpperCase();
+            const other = str.slice(1);
+            return first + other;
+        })
+
+
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                message: "hello",
+            },
+            // 过滤器函数 规定写法 
+            // 过滤器本质上就是一个函数
+            filters: {
+                // 注意：过滤器函数形参中的val永远都是管道符左边的值
+                capi(val) {
+                    // 字符串有charAt方法，这个方法接受索引值,表示从字符串中把索引对应的字符，获取出来
+                    console.log(val.charAt(0));
+                    // toUpperCase 变成大写
+                    const first = val.charAt(0).toUpperCase();
+                    // 字符串的slice方法  可以截取字符串，可以从指定索引往后截取
+                    const other = val.slice(1);
+                    // 强调 过滤器一定要有返回值
+                    return first + other;
+
+                }
+            }
+        })
+        const vm2 = new Vue({
+            el: "#app2",
+            data: {
+                message: "heima",
+            }
+        })
+    </script>
+</body>
+
+</html>

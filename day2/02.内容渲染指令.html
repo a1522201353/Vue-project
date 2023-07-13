@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 希望Vue能控制这个div -->
+    <div id="app">
+        <!-- v-text指令的缺点会覆盖元素内部原有的内容 -->
+        <p v-text="username"></p>
+        <p v-text="gander">性别</p>
+        <hr>
+        <p>姓名：{{username}}</p>
+        <p>性别：{{gander}}</p>
+        <hr>
+        <!-- 用{{}} v-text是渲染不出来标签页面的 -->
+        <p v-text="info"></p>
+        <p>{{info}}</p>
+        <!--v-html可以渲染出页面  -->
+        <p v-html="info"></p>   
+    </div>
+
+    <!-- 1.导入vue的库文件  在window全局就有了Vue这个构造函数-->
+    <script src="./lib/vue.js"></script>
+
+    <!-- 2.创建Vue的实例对象 -->
+    <script>
+        // 创建vue的实例对象
+        const vm = new Vue({
+            // el属性是固定的写法 要控制app这个div盒子 
+            el: "#app",
+            // data对象就是要渲染到页面的数据
+            data: {
+                username: "zhangsan",
+                gander: "男",
+                info: "<h4 style='color: red; font- weight: bold; '>欢迎大家来学校</h4>"
+            }
+        });
+    </script>
+</body>
+
+</html>
